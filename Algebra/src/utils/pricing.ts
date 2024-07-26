@@ -4,16 +4,16 @@ import { Bundle, Pool, Token } from './../types/schema'
 import { BigDecimal, BigInt } from '@graphprotocol/graph-ts'
 import { exponentToBigDecimal, safeDiv } from '../utils/index'
 
-const WMatic_ADDRESS = '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6'
-const USDC_WMatic_03_POOL = '0xb104f0535a35a69880dab51008756c31d47dbf0f'
+const WMatic_ADDRESS = '0x5300000000000000000000000000000000000004'
+const USDC_WMatic_03_POOL = '0xab7e302cd85fca6dd0989a1719f3a35bde67becb'
 
 // token where amounts should contribute to tracked volume and liquidity
 // usually tokens that many tokens are paired with s
 export let WHITELIST_TOKENS: string[] = [
   '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6', // WMATIC
-  '0xf2a0bc44debd394076c67962bb4869fd43c78018', // USDC
-  '0x5aefba317baba46eaf98fd6f381d07673bca6467', // USDT 
-  '0x49a390a3dfd2d01389f799965f3af5961f87d228'
+  '0x06efdbff2a14a7c8e15944d1f4a48f9f95f663a4', // USDC
+  '0xf55bec9cafdbe8730f096aa55dad6d22d44099df', // USDT 
+  '0xca77eb3fefe3725dc33bccb54edefc3d9f764f97'
 ]
 
 let MINIMUM_Matic_LOCKED = BigDecimal.fromString('0')
@@ -41,7 +41,7 @@ export function priceToTokenPrices(price: BigInt, token0: Token, token1: Token):
 export function getEthPriceInUSD(): BigDecimal {
   let usdcPool = Pool.load(USDC_WMatic_03_POOL) // dai is token0
   if (usdcPool !== null) {
-    return usdcPool.token0Price
+    return usdcPool.token1Price
   } else {
     return ZERO_BD
   }
