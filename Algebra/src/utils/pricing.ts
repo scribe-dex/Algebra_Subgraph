@@ -10,7 +10,7 @@ const USDC_WMatic_03_POOL = '0x0d5c90eb56deb79ba663f4f6d6bc6720e7405ad9'
 // token where amounts should contribute to tracked volume and liquidity
 // usually tokens that many tokens are paired with s
 export let WHITELIST_TOKENS: string[] = [
-  '0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6', // WMATIC
+  '0x5300000000000000000000000000000000000004', // WMATIC
   '0x06efdbff2a14a7c8e15944d1f4a48f9f95f663a4', // USDC
   '0xf55bec9cafdbe8730f096aa55dad6d22d44099df', // USDT 
   '0xca77eb3fefe3725dc33bccb54edefc3d9f764f97'
