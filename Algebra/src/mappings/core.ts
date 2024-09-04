@@ -479,10 +479,10 @@ export function handleSwap(event: SwapEvent): void {
 
   // update fee growth
   let poolContract = PoolABI.bind(event.address)
-  let feeGrowthGlobal0X128 = poolContract.totalFeeGrowth0Token()
-  let feeGrowthGlobal1X128 = poolContract.totalFeeGrowth1Token()
-  pool.feeGrowthGlobal0X128 = feeGrowthGlobal0X128 as BigInt
-  pool.feeGrowthGlobal1X128 = feeGrowthGlobal1X128 as BigInt
+  let feeGrowthGlobal0X128 = poolContract.try_totalFeeGrowth0Token()
+  let feeGrowthGlobal1X128 = poolContract.try_totalFeeGrowth1Token()
+  pool.feeGrowthGlobal0X128 = !feeGrowthGlobal0X128.reverted ? feeGrowthGlobal0X128.value as BigInt : new BigInt(0)
+  pool.feeGrowthGlobal1X128 = !feeGrowthGlobal1X128.reverted ? feeGrowthGlobal1X128.value as BigInt : new BigInt(0)
 
   // interval data
   let algebraDayData = updateAlgebraDayData(event)
